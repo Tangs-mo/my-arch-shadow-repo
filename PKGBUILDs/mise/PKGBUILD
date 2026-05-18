@@ -1,12 +1,12 @@
 pkgname=mise-shadow
 pkgver=2026.5.11
 pkgrel=1
-pkgdesc="Shadow package of"
+pkgdesc="Shadow package of mise"
 arch=('any')
 license=('custom')
-provides=('nix')               
-conflicts=('nix' 'nix-git')     
-replaces=('nix')                
+provides=('mise')               
+conflicts=('mise' 'mise-git' 'mise-bin')     
+replaces=('mise')             
 package() {
   true
 }
