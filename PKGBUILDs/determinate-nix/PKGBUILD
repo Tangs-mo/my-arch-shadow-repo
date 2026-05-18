@@ -1,0 +1,12 @@
+pkgname=determinate-nix-shadow  
+pkgver=3.20.0
+pkgrel=1
+pkgdesc="Shadow package to replace official nix and mask Determinate Nix"
+arch=('any')
+license=('custom')
+provides=('nix')               
+conflicts=('nix' 'nix-git')     
+replaces=('nix')                
+package() {
+  true
+}
