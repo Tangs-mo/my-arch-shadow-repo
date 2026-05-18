@@ -1,0 +1,12 @@
+pkgname=opencode-shadow
+pkgver=1.15.4
+pkgrel=1
+pkgdesc="Shadow package of opencode"
+arch=('any')
+license=('custom')
+provides=('opencode')               
+conflicts=('opencode' 'opencode-git' 'opencode-bin')     
+replaces=('opencode')             
+package() {
+  true
+}
