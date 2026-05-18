@@ -1,0 +1,29 @@
+post_install() {
+    echo "开始通过 Determinate 脚本安装 Nix..."
+    curl -fsSL https://install.determinate.systems/nix | sh -s -- install --no-confirm 
+    if [ $? -eq 0 ]; then
+        echo "==> [成功] Nix 已成功安装"
+    else
+        echo "==> [错误] Nix 安装脚本执行失败。"
+        return 1
+    fi
+}
+pre_remove() {
+    echo "==>开始彻底剥离 Nix 环境..."
+    if [ -x /nix/nix-installer ]; then
+        /nix/nix-installer uninstall --no-confirm
+    else
+        echo "==> 警告: 未找到nix-installer，尝试在线获取卸载器..."
+        curl -fsSL https://install.determinate.systems/nix | sh -s -- uninstall --no-confirm
+    fi
+    echo "==> [成功] Nix 环境、服务、用户组及 /nix 目录已被彻底清空！"
+}
+post_upgrade() {
+    echo "==> 检测到包版本更新，正在通过本地安装器升级 Nix..."
+    if [ -x /nix/nix-installer ]; then
+        sudo /nix/nix-installer upgrade
+    else
+        curl -fsSL https://install.determinate.systems/nix | sh -s -- install --no-confirm
+    fi
+    echo "==> [成功] Nix 环境已升级完成！"
+}
