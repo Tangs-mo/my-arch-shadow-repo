@@ -1,7 +1,7 @@
-pkgname=determinate-nix-shadow  
-pkgver=3.20.0
+pkgname=mise-shadow
+pkgver=2026.5.11
 pkgrel=1
-pkgdesc="Shadow package of Determinate Nix"
+pkgdesc="Shadow package of"
 arch=('any')
 license=('custom')
 provides=('nix')               
